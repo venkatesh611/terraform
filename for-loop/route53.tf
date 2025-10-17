@@ -1,7 +1,9 @@
 resource "aws_route53_record" "roboshop" {
-  zone_id = aws_route53_zone.primary.zone_id
-  name    = "www.example.com"
+  for_each = aws_instance.terraform
+  zone_id = var.hosted_zone_id
+  name    = "${each.key}.${var.domain_name}"
   type    = "A"
-  ttl     = 300
-  records = [aws_eip.lb.public_ip]
+  ttl     = 1
+  records = [each.value.private_ip]
+  
 }
