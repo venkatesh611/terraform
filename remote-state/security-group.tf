@@ -10,8 +10,8 @@ resource "aws_security_group" "allow-all" {
     dynamic "ingress" {
       for_each = toset(var.ingress-ports) 
       content {
-        from_port   = ingress.value.from_port
-        to_port     = ingress.value.to_port
+        from_port   = ingress.value
+        to_port     = ingress.value
         protocol    = "tcp" 
         
         #var.ingress-protocol # -1 means all protocols

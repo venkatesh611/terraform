@@ -56,7 +56,7 @@ variable "ingress-protocol" {
      default = "-1"
 }
 variable "ingress-cidr-blocks" {
-     default = ["0.0.0.0.0/0"]
+     default = ["0.0.0.0/0"]
 }
 variable "egress-from-port" {
      default = 0
