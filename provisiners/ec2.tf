@@ -17,6 +17,18 @@ resource "aws_instance" "terraform" {
       password = "DevOps321"
       host = self.public_ip
     }
+    provisioner "remote-exec" {
+      inline = [
+        "sudo dnf update -y",
+        "sudo dnf install -y nginx",
+        "sudo systemctl start nginx",
+        "sudo systemctl enable nginx"
+      ]
+    }
+    provisioner "remote-exec" {
+      inline = [ "sudo systemctl stop nginx" ]
+      when   = destroy
+    }
   
 }
 resource "aws_security_group" "allow_all" {
