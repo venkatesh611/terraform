@@ -8,7 +8,7 @@ resource "aws_instance" "terraform" {
       on_failure = continue
     }
     provisioner "local-exec" {
-      command = "instance_id=${self.id} was deleted"
+      command = "echo instance_id=${self.id} was deleted"
       when    = destroy
     }
     connection {
