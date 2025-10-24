@@ -1,7 +1,7 @@
 resource "aws_instance" "terraform" {
     ami           = var.ami_id
     instance_type = var.instance_type
-    vpc_security_group_ids = [aws_security_group.allow-all.id]
+    vpc_security_group_ids = [aws_security_group.allow_all.id]
     tags = var.tags
     provisioner "local-exec" {
       command = "echo Instance ${self.id} with IP ${self.public_ip} has been created"
